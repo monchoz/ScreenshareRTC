@@ -1,0 +1,25 @@
+{
+  "name": "screenshare-rtc",
+  "version": "1.0.0",
+  "description": "ScreenshareRTC client project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "postcss public/styles/style.css -o build/style.css"
+  },
+  "author": "Ramon Zuniga",
+  "license": "MIT License",
+  "dependencies": {
+    "autoprefixer": "^10.3.6",
+    "electron": "^15.0.0",
+    "postcss": "^8.3.8",
+    "postcss-cli": "^9.0.1",
+    "screenshot-desktop": "^1.12.7",
+    "socket.io": "^4.2.0",
+    "socket.io-client": "^4.2.0",
+    "tailwindcss": "^2.2.16",
+    "uuid": "^8.3.2"
+  },
+  "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css"
+}
