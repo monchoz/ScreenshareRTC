@@ -4,7 +4,7 @@
 ## On the client side:
  * Electron to build our client as a desktop application.
  * SocketIO client IO library help us to connect with our SocketIO server.
- * WEBRT through desktopCapturer using the navigator.mediaDevices.getUserMedia API.
+ * WebRTC through desktopCapturer using the navigator.mediaDevices.getUserMedia API.
  * Random strings generation using uuid
 
 ## On the server side:
