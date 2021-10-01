@@ -1,16 +1,19 @@
 // app.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, ipcMain } = require('electron')
+const { v4: uuidv4 } = require('uuid');
+
+var socket = require('socket.io-client')('http://192.168.1.18:5000');
 
 function createWindow() {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 350,
+        height: 450,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            nodeIntegration: true,
+            contextIsolation: false
         }
     })
 
@@ -18,7 +21,7 @@ function createWindow() {
     mainWindow.loadFile('index.html')
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Remove menu bar
     mainWindow.removeMenu()
@@ -43,3 +46,18 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit()
 })
+
+// Event handlers
+ipcMain.on("start-sharing", function(event, arg) {
+    // Uncomment this to support private sharing
+    /*var uuid = uuidv4(); // random string
+    socket.emit('join', uuid); // join to a room
+    event.reply('uuid', uuid); // send generated uuid to client UI*/
+
+    let obj = {};
+    obj.imgData = arg;
+    // send object to server
+    socket.emit('screen-data', JSON.stringify(obj));
+})
+
+ipcMain.on("stop-sharing", function(event, arg) {})
