@@ -8,5 +8,5 @@
  * Random strings generation using uuid
 
 ## On the server side:
-* Setup an Express server with SocketIO to stablish real-time communication protocols with the client.
+* Setup an Express server with SocketIO to establish real-time communication protocols with the client.
 * Share screen only to selected users using rooms.
